@@ -82,8 +82,10 @@ public class CppQt5AbstractCodegenTest {
         OpenAPI openAPI = new OpenAPI();
         codegen.preprocessOpenAPI(openAPI);
         codegen.processOpts();
+        List<Schema> m = new ArrayList<Schema>();
         //this wont return any schema. 
         ModelUtils.getAllSchemas(openAPI).forEach(schema -> {
+            m.add(schema);
             codegen.getTypeDeclaration(schema);
         });
         //check if there are any schemas
